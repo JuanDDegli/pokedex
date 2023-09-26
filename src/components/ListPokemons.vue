@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+
 
 defineProps({ name: String, imageUrl: String });
 </script>
@@ -15,5 +15,4 @@ defineProps({ name: String, imageUrl: String });
 
 <style>
 
-</style>
 </style>
