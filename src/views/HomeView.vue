@@ -1,6 +1,7 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, computed } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
+import PokemonCardSelected from '../components/PokemonCardSelected.vue';
 
 let pokemons = reactive(ref([]));
 
@@ -22,6 +23,9 @@ let pokemons = reactive(ref([]));
 </script>
 
     <template>
+
+        <pokemon-card-selected />
+
     <main class="bg-gray-300 pl-32 pr-32 pt-32 pb-32 border-solid border-2 border-red-600">
         <div class="container rounded-xl bg-white grid grid-cols-3 gap-4 p-5 border-solid border-2 border-yellow-600 ">
         <ListPokemons

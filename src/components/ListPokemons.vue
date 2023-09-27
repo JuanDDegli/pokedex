@@ -1,6 +1,4 @@
 <script setup>
-
-
 defineProps({ name: String, imageUrl: String });
 </script>
 
@@ -9,6 +7,8 @@ defineProps({ name: String, imageUrl: String });
     <div class="bg-gray-500 rounded pt-2 pb-2 m-2 mt-5 p-2 shadow-lg">
         <p>{{ name }}</p>
         <img :src="imageUrl" :alt="name" />
+        <button @click="openModal(pokemon)">Detalhes</button>
+
     </div>
     </div>
 </template>
