@@ -24,7 +24,7 @@ const selectPokemon = () => {
 
 <template>
   <div
-    class="cursor-pointer my-auto bg-gradient-to-r from-blue-950 via-slate-900 to-slate-900 -   gap-2 border-t-0 border-b-0 border-l-0 border-r-8 border-yellow-400 rounded-lg p-2 shadow-xl hover:p-3 transition delay-100 hover:-translate-y-1 hover:scale-105 duration-700"
+    class="cursor-pointer my-auto bg-gradient-to-r from-blue-950 via-slate-900 to-slate-900 gap-2 border-t-0 border-b-0 border-l-0 border-r-8 border-yellow-400 rounded-lg p-2 shadow-xl hover:p-3 transition delay-100 hover:-translate-y-1 hover:scale-105 duration-700"
     @pokemon-selected="selectPokemon"
   >
     <div  class="flex items-start"> <!-- Usamos flex para alinhar os elementos verticalmente -->
