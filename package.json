@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@themesberg/flowbite": "^1.3.0",
+    "flowbite-vue": "^0.0.17-next.13",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
