@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 const pokemon = defineProps(["name", "xp", "height", "img"])
 
 </script >
@@ -31,4 +31,4 @@ const pokemon = defineProps(["name", "xp", "height", "img"])
 .card-body {
   margin-top: -20px; /* Para centralizar o conteúdo verticalmente */
 }
-</style>
+</style> -->

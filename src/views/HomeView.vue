@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted, ref, computed, reactive } from 'vue';
-import CardPokemonSelected from '../components/CardPokemonSelected.vue';
+// import CardPokemonSelected from '../components/CardPokemonSelected.vue';
 import ListPokemons from '../components/ListPokemons.vue';
+import PokemonModal from '../components/PokemonModal.vue';
 
 let pokemons = reactive(ref());
 let searchPokemonField = ref('');
@@ -51,12 +52,12 @@ const selectPokemon = async (pokemon) => {
         <template>
         <main class="bg-custom-blue-100 pl-32 pr-32 pt-32 pb-32  main-bg">
 
-          <CardPokemonSelected
+          <!-- <CardPokemonSelected
           :name="pokemonSelected?.name"
           :xp="pokemonSelected?.base_experience"
           :height="pokemonSelected?.height"
           :img="pokemonSelected?.sprites.front_default"
-          />
+          /> -->
 
             <div class="mb-3 ml-3 relative">
                 <label for="searchPokemonField" class="hidden">Pesquisar...</label>
@@ -79,6 +80,8 @@ const selectPokemon = async (pokemon) => {
                 @click="selectPokemon(pokemon)"
             />
             </div>
+            <PokemonModal :pokemonSelected="pokemonSelected" @close="pokemonSelected = null" />
+
         </main>
         </template>
 
