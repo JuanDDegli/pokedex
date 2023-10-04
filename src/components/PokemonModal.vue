@@ -1,114 +1,221 @@
-    <script setup>
-    import { ref, watch } from 'vue';
+<script setup>
+import { ref, watch } from 'vue';
 
-    const pokemon = ref(null);
-    const onClose = () => {
-    pokemon.value = null;
-    };
+const pokemon = ref(null);
+const isStatusDrawerOpen = ref(false);
+const onClose = () => {
+  pokemon.value = null;
+};
 
-    // Recebendo a propriedade pokemonSelected
-    const props = defineProps({
-    pokemonSelected: Object,
-    });
+const toggleStatusDrawer = () => {
+  isStatusDrawerOpen.value = !isStatusDrawerOpen.value;
+};
 
-    watch(
-    () => props.pokemonSelected,
-    (newVal) => {
-        pokemon.value = newVal;
-    }
-    );
-    </script>
+// Recebendo a propriedade pokemonSelected
+const props = defineProps({
+  pokemonSelected: Object,
+});
 
-    <template>
-        <div v-if="pokemon" class="pokemon-modal">
-        <div class="pokemon-modal-content bg-custom-blue-100">
-            <button class="close-button" @click="onClose">
-            <strong> ✖️ </strong>
-            </button>
-            <div class="pokemon-details">
-            <img :src="pokemon?.sprites.front_default" :alt="pokemon?.name" class=" w-64 h-auto" />
-            <div class="text-3xl overflow-ellipsis font-semibold whitespace-no-wrap overflow-hidden text-black inline-block  rounded">
-            <span class="uppercase">{{ pokemon.name.charAt(0) }}</span>{{ pokemon.name.slice(1) }}
-            </div>
-            <hr class=" h-1 m-10 my-6 bg-gray-400 border-0 rounded">
-            <div class="pokemon-stats">
-                
-                <div class="stat">
-                <strong>XP:</strong>
-                <span>{{ pokemon?.base_experience }}</span>   
-                </div>
-                <div class="stat">
-                <strong>Altura:</strong>
-                <span>{{ pokemon?.height }}</span>
-                </div>
-            </div>
-            </div>
+watch(() => props.pokemonSelected, (newVal) => {
+  pokemon.value = newVal;
+});
+
+const getStatColor = (statName) => {
+  switch (statName.toLowerCase()) {
+    default:
+      return 'bg-yellow-500';
+  }
+};
+
+const getTypeBackgroundColor = (type) => {
+  switch (type.toLowerCase()) {
+    case 'fire':
+      return 'bg-orange-500';
+    case 'water':
+      return 'bg-blue-500';
+    case 'grass':
+      return 'bg-green-600';
+    case 'bug':
+    return 'bg-custom-green-500';
+    case 'psychic':
+    return 'bg-pink-400';
+    case 'fighting':
+    return 'bg-red-700';
+    case 'poison':
+    return 'bg-custom-pink-100';
+    case 'normal':
+    return 'bg-custom-gray-50';
+    case 'flying':
+    return 'bg-custom-blue-50';
+    case 'fairy':
+    return 'bg-custom-pink-50';
+    case 'steel':
+    return 'bg-custom-gray-700';
+    case 'ground':
+    return 'bg-custom-brown-100';
+    case 'ice':
+    return 'bg-custom-blue-200';
+    case 'dark':
+    return 'bg-custom-gray-600';
+    case 'ghost':
+    return 'bg-custom-purple-50';
+    case 'electric':
+    return 'bg-yellow-400';
+    case 'dragon':
+    return 'bg-custom-yellow-50';
+    case 'rock':
+    return 'bg-custom-brown-200';
+
+    default:
+      return 'bg-gray-500';
+  }
+};
+</script>
+
+<template>
+  <div v-if="pokemon" class="pokemon-modal transition-all delay-100">
+    <div class="pokemon-card bg-gradient-to-r from-blue-950 via-slate-900 to-slate-900 p-6 rounded-lg shadow-lg" style="max-height: 90vh; overflow-y: auto;">
+      <button class="close-button" @click="onClose">
+        <h1 class="text-white"> ✖️ </h1>
+      </button>
+      <div class="pokemon-details flex flex-col md:flex-row items-center overflow-y">
+        <div class="w-full md:w-1/3 text-center md:text-left">
+          <img :src="pokemon?.sprites.front_default" :alt="pokemon?.name" class="  w-80 inline-block mx-auto md:w-full rounded-lg shadow-md" />
         </div>
+        <div class="mt-4 w-full md:w-2/3">
+          <h2 class="text-6xl pl-0 text-white overflow-ellipsis font-semibold whitespace-no-wrap inline-block overflow-hidden ml-0 mt-0">
+  <span class=" pl-0 text-5xl " style="text-transform: capitalize;">{{ pokemon.name }}</span>
+</h2>
+
+          <h2 class="text-3xl pl-4 text-white overflow-ellipsis font-semibold whitespace-no-wrap inline-block overflow-hidden ml-4 mt-0">
+            <span class="uppercase mt-0">#{{ pokemon.id }}</span>
+          </h2>
+          <hr class="my-2 border-t border-gray-400">
+          <div class="mt-4">
+            <div class="flex flex-wrap">
+              <div v-for="(type, index) in pokemon?.types" :key="index" class="type-chip mb-2 mr-2 ml-2 rounded p-2 text-white" :class="getTypeBackgroundColor(type.type.name)">
+                {{ type.type.name }}
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h2 class="text-white">Altura e Peso:</h2>
+            <div class="flex flex-wrap ml-2">
+              <div class="stat bg-custom-gray-300 p-3 mb-3  rounded mr-2 shadow-white">
+                <span class="text-black">{{ (pokemon?.height * 100 / 10).toFixed(0) }} cm</span>
+              </div>
+              <div class="stat bg-custom-gray-300 p-3 mb-3 rounded shadow-white ">
+                <span class="text-black">{{ (pokemon?.weight / 10).toFixed(0) }} kg</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+  <h2 class="text-white">Habilidades:</h2>
+  <div v-for="(ability, index) in pokemon?.abilities" :key="index" class="inline-block bg-custom-gray-300 p-3 rounded ml-2 mt-4 mb-8 shadow-white">
+    <span class="text-black">{{ ability.ability.name }}</span>
+  </div>
+</div>
         </div>
-    </template>
+      </div>
+      <hr />
+      <div class="pt-6 text-black">
+        <button @click="toggleStatusDrawer" class="status-toggle-button text-black bg-yellow-400 hover:bg-yellow-600">
+          {{ isStatusDrawerOpen ? 'Close Stats' : 'Open Stats' }}
+        </button>
+      </div>
+      <!-- Conteúdo de Stats -->
+      <div v-if="isStatusDrawerOpen" class="status-content">
+  <div v-for="(stat, index) in pokemon?.stats" :key="index" class="stat items-center mb-4 pl-4 pr-4">
+    <span class="uppercase text-white">{{ stat.stat.name }}:</span>
+    <div class="flex items-center justify-between mt-2">
+      <span class="text-white">{{ stat.base_stat }}</span>
+      <div class="bg-gray-300 rounded-full h-2.0 ml-2 mr-2 flex-grow">
+        <div :style="'width: ' + (stat.base_stat / 1.5) + '%' " :class="getStatColor(stat.stat.name) + ' h-2 rounded-full'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</template>
+<style scoped>
+.pokemon-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    <style scoped>
-    .pokemon-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+.pokemon-card {
+  width: 100%;
+  max-width: 600px;
+}
 
-    .pokemon-modal-content {
-    padding: 30px; /* Aumentar o espaçamento interno */
-    border-radius: 5px;
-    height: 500px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    max-width: 500px; /* Largura máxima aumentada */
-    width: 100%;
-    text-align: center;
-    position: relative;
-    }
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+}
 
-    .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #333;
-    }
+.close-button img {
+  width: 20px;
+  height: 20px;
+}
 
-    .pokemon-details img {
-    max-width: 100px;
-    margin: 0 auto;
-    }
+.pokemon-details img {
+  max-width: 150px;
+  margin: 0 auto;
+}
 
-    .pokemon-details h2 {
-    font-size: 24px;
-    margin-top: 10px;
-    }
+.pokemon-details h2 {
+  font-size: 28px;
+  margin-top: 15px;
+  font-weight: bold;
+}
 
-    .pokemon-stats {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    }
+.stat {
+  text-align: center;
+  margin-top: 20px;
+}
 
-    .stat {
-    text-align: center;
-    }
+.stat strong {
+  font-weight: bold;
+  display: block;
+}
 
-    .stat strong {  
-    font-weight: bold;
-    display: block;
-    }
+.stat span {
+  font-weight: normal;
+}
 
-    .stat span {
-    font-weight: normal;
-    }
-    </style>
+.stat .uppercase {
+  text-transform: capitalize;
+}
+
+.status-toggle-button {
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.status-content {
+  margin-top: 20px;
+}
+
+.type-chip {
+  font-size: 18px;
+}
+</style>

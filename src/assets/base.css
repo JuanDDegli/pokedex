@@ -21,27 +21,6 @@
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 }
 
-:root {
-  --normal-color: #a6a877;
-  --grass-color: #8BBE8;
-  --fire-color: #ffa756;
-  --water-color: #58ABF6;
-  --electric-color: #F2CB55;
-  --ice-color: #98d5d7;
-  --ground-color: #dfbf69;
-  --flying-color: #a98ff0;
-  --poison-color: #695C97;
-  --fighting-color: #bf3029;
-  --psychic-color: #f65687;
-  --dark-color: #725847;
-  --rock-color: #b8a137;
-  --bug-color: #8BD674;
-  --ghost-color: #6e5896;
-  --steel-color: #b9b7cf;
-  --dragon-color: #6f38f6;
-  --fairy-color: #f9aec7;
-
-}
 
 /* semantic color variables for this project */
 :root {
