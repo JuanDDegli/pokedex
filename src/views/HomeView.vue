@@ -9,7 +9,7 @@ let searchPokemonField = ref('');
 let pokemonSelected = reactive(ref());
 
 onMounted(() => {
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+  fetch('https://pokeapi.co/api/v2/pokemon?limit=500&offset=0')
     .then((res) => res.json())
     .then(async (res) => {
       const pokemonData = await Promise.all(
@@ -51,13 +51,6 @@ const selectPokemon = async (pokemon) => {
 
         <template>
         <main class="bg-custom-blue-100 pl-32 pr-32 pt-32 pb-32  main-bg">
-
-          <!-- <CardPokemonSelected
-          :name="pokemonSelected?.name"
-          :xp="pokemonSelected?.base_experience"
-          :height="pokemonSelected?.height"
-          :img="pokemonSelected?.sprites.front_default"
-          /> -->
 
             <div class="mb-3 ml-3 relative">
                 <label for="searchPokemonField" class="hidden">Pesquisar...</label>
