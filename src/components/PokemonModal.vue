@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 
 const pokemon = ref(null);
 const isStatusDrawerOpen = ref(false);
@@ -9,6 +9,12 @@ const onClose = () => {
 
 const toggleStatusDrawer = () => {
   isStatusDrawerOpen.value = !isStatusDrawerOpen.value;
+};
+
+const isShiny = ref(false);
+
+const toggleShiny = () => {
+  isShiny.value = !isShiny.value;
 };
 
 // Recebendo a propriedade pokemonSelected
@@ -74,31 +80,34 @@ const getTypeBackgroundColor = (type) => {
 
 <template>
   <div v-if="pokemon" class="pokemon-modal transition-all delay-100">
-    <div class="pokemon-card bg-gradient-to-r from-blue-950 via-slate-900 to-slate-900 p-6 rounded-lg shadow-lg" style="max-height: 90vh; overflow-y: auto;">
+    <div class="pokemon-card bg-gradient-to-r from-blue-950 via-slate-900 to-slate-900 p-6 rounded-lg shadow-lg md:max-w-3xl" style="max-height: 90vh; overflow-y: auto;">
       <button class="close-button" @click="onClose">
         <h1 class="text-white"> ✖️ </h1>
       </button>
       <div class="pokemon-details flex flex-col md:flex-row items-center overflow-y">
-        <div class="w-full md:w-1/3 text-center md:text-left">
-          <img :src="pokemon?.sprites.front_default" :alt="pokemon?.name" class="  w-80 inline-block mx-auto md:w-full rounded-lg shadow-md" />
-        </div>
-        <div class="mt-4 w-full md:w-2/3">
-          <h2 class="text-6xl pl-0 text-white overflow-ellipsis font-semibold whitespace-no-wrap inline-block overflow-hidden ml-0 mt-0">
-  <span class=" pl-0 text-5xl " style="text-transform: capitalize;">{{ pokemon.name }}</span>
+        <div class="relative">
+          <img :src="isShiny ? pokemon?.sprites.front_shiny : pokemon?.sprites.front_default" :alt="pokemon?.name" class="w-96 md:w-80 inline-block mx-auto  rounded-lg shadow-md" />
+          <button @click="toggleShiny" class="shiny-toggle-button text-black bg-custom-gray-300 block mx-auto mt-4 text white md:mt-2" :class="{ 'shiny-active': isShiny }">
+            <h1 class="ss" > ✨ </h1>
+          </button>
+        </div>  
+        <div class="mt-4 w-full md:w-2/3 ml-6">
+          <h2 class="text-6xl  text-white overflow-ellipsis font-semibold whitespace-no-wrap inline-block overflow-hidden ml-0 mt-0">
+  <span class=" text-5xl ml-8 " style="text-transform: capitalize;">{{ pokemon.name }}</span>
 </h2>
 
           <h2 class="text-3xl pl-4 text-white overflow-ellipsis font-semibold whitespace-no-wrap inline-block overflow-hidden ml-4 mt-0">
             <span class="uppercase mt-0">#{{ pokemon.id }}</span>
           </h2>
-          <hr class="my-2 border-t border-gray-400">
-          <div class="mt-4">
-            <div class="flex flex-wrap">
-              <div v-for="(type, index) in pokemon?.types" :key="index" class="type-chip mb-2 mr-2 ml-2 rounded p-2 text-white" :class="getTypeBackgroundColor(type.type.name)">
+          <hr class="my-2 border-t ml-6 ">
+          <div class="mt-4 ml-6">
+            <div class="flex flex-wrap ml-6">
+              <div v-for="(type, index) in pokemon?.types" :key="index" class="type-chip mb-2  mr-2  rounded-xl p-2 text-white" :class="getTypeBackgroundColor(type.type.name)">
                 {{ type.type.name }}
               </div>
             </div>
           </div>
-          <div class="mt-4">
+          <div class="mt-4 ml-10">
             <h2 class="text-white">Altura e Peso:</h2>
             <div class="flex flex-wrap ml-2">
               <div class="stat bg-custom-gray-300 p-3 mb-3  rounded mr-2 shadow-white">
@@ -109,10 +118,10 @@ const getTypeBackgroundColor = (type) => {
               </div>
             </div>
           </div>
-          <div class="mt-4">
+          <div class="mt-4 ml-10">
   <h2 class="text-white">Habilidades:</h2>
-  <div v-for="(ability, index) in pokemon?.abilities" :key="index" class="inline-block bg-custom-gray-300 p-3 rounded ml-2 mt-4 mb-8 shadow-white">
-    <span class="text-black">{{ ability.ability.name }}</span>
+  <div v-for="(ability, index) in pokemon?.abilities" :key="index" class="inline-block bg-custom-gray-300 p-3 rounded  ml-2 mt-4 mb-8 shadow-white">
+    <span class="text-black ">{{ ability.ability.name }}</span>
   </div>
 </div>
         </div>
@@ -217,5 +226,21 @@ const getTypeBackgroundColor = (type) => {
 
 .type-chip {
   font-size: 18px;
+}
+
+
+.shiny-toggle-button {
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.shiny-toggle-button.shiny-active {
+  background-color: #ff9900; /* Cor de destaque para a versão shiny */
+  color: white; /* Cor de texto para a versão shiny */
 }
 </style>
