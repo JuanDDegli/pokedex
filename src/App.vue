@@ -30,7 +30,7 @@
           <router-link to="/" class="block py-2 pl-3 pr-4 text-black rounded hover:bg-yellow-400 md:hover:bg-transparent md:text-yellow-400 md:p-0 transition  delay-150  hover:-translate-y-1 hover:scale-105 duration-100 ..." aria-current="page">Home</router-link>
         </li>
         <li>
-          <router-link to="/Favorites" class="block py-2 pl-3 pr-4 text-black rounded hover:bg-yellow-400 md:hover:bg-transparent md:text-yellow-400 md:p-0 transition  delay-150  hover:-translate-y-1 hover:scale-105 duration-100 ...">Favorites</router-link>
+          <router-link to="/about" class="block py-2 pl-3 pr-4 text-black rounded hover:bg-yellow-400 md:hover:bg-transparent md:text-yellow-400 md:p-0 transition  delay-150  hover:-translate-y-1 hover:scale-105 duration-100 ...">About</router-link>
         </li>
       </ul>
     </div>
