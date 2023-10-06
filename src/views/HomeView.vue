@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, ref, computed, reactive } from 'vue';
-// import CardPokemonSelected from '../components/CardPokemonSelected.vue';
 import ListPokemons from '../components/ListPokemons.vue';
 import PokemonModal from '../components/PokemonModal.vue';
 
@@ -46,22 +45,41 @@ const selectPokemon = async (pokemon) => {
 
   console.log(pokemonSelected.value);
 };
+
 </script>
 
 
-        <template>
-        <main class="bg-custom-blue-100 pl-32 pr-32 pt-32 pb-32  main-bg">
-
-            <div class="mb-3 ml-3 relative">
-                <label for="searchPokemonField" class="hidden">Pesquisar...</label>
-                    <input
-                        type="text"
-                        v-model="searchPokemonField"
-                        class="bg-custom-blue-100 text-yellow-400 border border-black p-2 shadow-2xl rounded-full focus:outline-none placeholder-yellow-400"
-                        id="searchPokemonField"
-                        placeholder="Pikachu..."
-                    >
-            </div>
+<template>
+  <main class="bg-custom-blue-100 pl-32 pr-32 pt-32 pb-32  main-bg">
+    <div class="mb-3 ml-2 relative">
+      <label for="searchPokemonField" class="hidden">Pesquisar...</label>
+      <div class="max-w-md relative rounded-full bg-custom-blue-100 text-yellow-400 border border-black p-2 shadow-2xl">
+        <input
+          type="text"
+          v-model="searchPokemonField"
+          class="w-full bg-custom-blue-100 text-yellow-400 focus:outline-none placeholder-yellow-400 pl-8"
+          id="searchPokemonField"
+          placeholder="Pesquisar Pokemon..."
+        />
+        <!-- Coloque o ícone dentro do input com posição absoluta -->
+        <svg
+          class="w-4 h-4 text-yellow-400 mt-1  absolute left-3 top-2 cursor-pointer"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+          @click="performSearch"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
+        </svg>
+      </div>
+    </div>
 
             <div class=" grid md:grid-cols-3 sm:grid-cols-1 gap-4 p-2 ">
                 <ListPokemons
