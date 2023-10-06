@@ -28,6 +28,7 @@ PokeVite é um aplicativo web que permite aos usuários pesquisar e visualizar i
 -Stats Base (Hp, Attack, Defense, Special-Attack, Special-Defense, Speed)
 
 ## Layout
+![Image-HomeView](https://github.com/JuanDDegli/pokedex/assets/104657915/3a06db30-4b78-4b88-a317-9753db638943)
 
 # Dados dos Pokeemons
 -Poke.Api
