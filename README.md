@@ -8,24 +8,27 @@ PokeVite é um aplicativo web que permite aos usuários pesquisar e visualizar i
 
 
 ## A aplicação exibe dados como:
--Nome
--Id
--Tipo do Pokemon
--Imagem
--Imagem do Pokemon Shiny.
--Peso
--Altura
--Habilidades
+
+-Nome;
+
+-Id;
+
+-Tipo do Pokemon;
+
+-Imagem;
+
+-Imagem do Pokemon Shiny;
+
+-Peso;
+
+-Altura;
+
+-Habilidades;
+
 -Stats Base (Hp, Attack, Defense, Special-Attack, Special-Defense, Speed)
 
 ## Layout
-[!Layout Home View](../pokedex_vite/src/assets/Image-HomeView.png)
 
-[!Layout Card Pokemon](../pokedex_vite/src/assets/Imagem-Card-Pokemon.png)
-
-[!Layout Card Pokemon Shiny](../pokedex_vite/src/assets/Imagem-Card-Pokemon-Shiny.png)
-
-[!Layout Card Stats](../pokedex_vite/src/assets/Imagem-Card-Pokemon-Stats.png)
 # Dados dos Pokeemons
 -Poke.Api
 
