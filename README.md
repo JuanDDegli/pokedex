@@ -1,29 +1,64 @@
-# pokedex_vite
+# PokeVite
 
-This template should help get you started developing with Vue 3 in Vite.
+# Sobre o projeto
 
-## Recommended IDE Setup
+https://main--shimmering-babka-fa9976.netlify.app/
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+PokeVite é um aplicativo web que permite aos usuários pesquisar e visualizar informações detalhadas sobre Pokémon. Ele usa a API do Pokémon para buscar dados e oferece uma interface amigável para explorar o mundo dos Pokémon.
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## A aplicação exibe dados como:
+-Nome
+-Id
+-Tipo do Pokemon
+-Imagem
+-Imagem do Pokemon Shiny.
+-Peso
+-Altura
+-Habilidades
+-Stats Base (Hp, Attack, Defense, Special-Attack, Special-Defense, Speed)
 
-## Project Setup
+## Layout
 
-```sh
+
+# Dados dos Pokeemons
+-Poke.Api
+
+
+# Tecnologias utilizadas
+-Vue.Js 3
+
+-Tailwind.CSS
+
+-Vite
+
+## Implantação em produção
+-Netlify
+
+# Como executar o projeto
+
+Pré-requisitos: npm / yarn
+
+```bash
+# clonar repositório
+git clone https://github.com/JuanDDegli/pokedex
+
+# entrar na pasta do projeto
+cd pokedex
+
+# instalar dependências
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# executar o projeto
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Possíveis Melhorias Futuras
+- Favoritas Pokemons;
+- Pesquisar por Id;
+- Exibir Mais informações de cada Pokemon;
+- Filtrar pokemons por tipos, raridade e etc 
 
-```sh
-npm run build
-```
+# Autor
+
+Juan Diego Degli Esposte Rosa
