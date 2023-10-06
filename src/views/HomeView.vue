@@ -8,7 +8,7 @@ let searchPokemonField = ref('');
 let pokemonSelected = reactive(ref());
 
 onMounted(() => {
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=500&offset=0')
+  fetch('https://pokeapi.co/api/v2/pokemon?limit=386&offset=0')
     .then((res) => res.json())
     .then(async (res) => {
       const pokemonData = await Promise.all(

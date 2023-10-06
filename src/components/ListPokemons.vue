@@ -62,9 +62,9 @@
       @pokemon-selected="selectPokemon"
     >
       <div class="flex items-start">
-        <div class="inline-block text-gray-200 hover:rounded-full transition delay-250 hover:-translate-y-1 hover:scale-100 ...">
-          <img :src="imageUrl" :alt="name" class="" />
-        </div>
+        <div class="text-gray-200 hover:rounded-full transition delay-250 hover:-translate-y-1 hover:scale-100">
+        <img :src="imageUrl" :alt="name" class="w-16 h-16 md:w-24 md:h-24" /> <!-- Tamanhos ajustados -->
+      </div>
         <div class="ml-2">
           <div class="text-3xl overflow-ellipsis font-semibold whitespace-no-wrap overflow-hidden text-white inline-block rounded">
             <span class="uppercase">{{ name.charAt(0) }}</span>{{ name.slice(1) }}

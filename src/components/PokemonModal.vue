@@ -84,7 +84,7 @@ const getTypeBackgroundColor = (type) => {
       <button class="close-button" @click="onClose">
         <h1 class="text-white"> ✖️ </h1>
       </button>
-      <div class="pokemon-details flex flex-col md:flex-row items-center overflow-y">
+      <div class="pokemon-details flex flex-col md:flex-row items-center  overflow-y">
         <div class="relative">
           <img :src="isShiny ? pokemon?.sprites.front_shiny : pokemon?.sprites.front_default" :alt="pokemon?.name" class="w-96 md:w-80 inline-block mx-auto  rounded-lg shadow-md" />
           <button @click="toggleShiny" class="shiny-toggle-button text-black bg-custom-gray-300 block mx-auto mt-4 text white md:mt-2" :class="{ 'shiny-active': isShiny }">
@@ -242,5 +242,28 @@ const getTypeBackgroundColor = (type) => {
 .shiny-toggle-button.shiny-active {
   background-color: #ff9900; /* Cor de destaque para a versão shiny */
   color: white; /* Cor de texto para a versão shiny */
+}
+
+.pokemon-card {
+  /* ... Outros estilos ... */
+  overflow-y: auto; /* Ativar a barra de rolagem vertical quando necessário */
+
+  /* Defina as cores desejadas para a barra de rolagem */
+  scrollbar-width: thin; /* Estilo fino da barra de rolagem (suportado em alguns navegadores) */
+  scrollbar-color: #333 #888; /* Cor da barra de rolagem e cor do fundo */
+
+  /* Para navegadores que não suportam o estilo personalizado da barra de rolagem */
+  /* Você pode adicionar estilos de fallback aqui */
+}
+
+/* Estilizando a alça da barra de rolagem */
+.pokemon-card::-webkit-scrollbar-thumb {
+  background-color: #888; /* Cor da alça da barra de rolagem */
+  border-radius: 10px; /* Raio de borda da alça */
+}
+
+/* Estilizando o fundo da barra de rolagem */
+.pokemon-card::-webkit-scrollbar-track {
+  background-color: #333; /* Cor de fundo da barra de rolagem */
 }
 </style>
