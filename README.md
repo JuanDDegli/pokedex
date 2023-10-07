@@ -33,10 +33,10 @@ PokeVite é um aplicativo web que permite aos usuários pesquisar e visualizar i
 ![Image-HomeView](https://github.com/JuanDDegli/pokedex/assets/104657915/3a06db30-4b78-4b88-a317-9753db638943)
 
 ### Layout Card
-![Imagem-Card-Pokemon](https://github.com/JuanDDegli/pokedex/assets/104657915/c04cdf19-1c5d-4f85-9811-ee01692c7fd7)
+![Imagem-Card-Pokemon](https://github.com/JuanDDegli/pokedex/assets/104657915/9e2e9964-7180-4f09-8d5a-766f3ccdcdd0)
 
 ### Layout Card Shiny
-![Imagem-Card-Pokemon](https://github.com/JuanDDegli/pokedex/assets/104657915/9e2e9964-7180-4f09-8d5a-766f3ccdcdd0)
+![Imagem-Card-Pokemon-Shiny](https://github.com/JuanDDegli/pokedex/assets/104657915/74dbe11c-f84b-4a7d-a678-0111a5a27608)
 
 ### Layout Card Stats
 ![Imagem-Card-Pokemon-Stats](https://github.com/JuanDDegli/pokedex/assets/104657915/f3f3d6c1-fd8f-4917-b646-f3e8078e7c32)
