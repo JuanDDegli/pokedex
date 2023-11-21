@@ -70,7 +70,7 @@
             <span class="uppercase">{{ name.charAt(0) }}</span>{{ name.slice(1) }}
           </div>
           <div>
-            <div class="mt-2"> <!-- Adicione espaço vertical entre os chips de tipo -->
+            <div class="mt-2">
               <div
                 v-for="type in types"
                 :key="type"

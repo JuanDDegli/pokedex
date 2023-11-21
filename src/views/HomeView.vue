@@ -8,19 +8,19 @@ let searchPokemonField = ref('');
 let pokemonSelected = reactive(ref());
 
 onMounted(() => {
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=386&offset=0')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=386&offset=0')
     .then((res) => res.json())
     .then(async (res) => {
       const pokemonData = await Promise.all(
         res.results.map(async (pokemon) => {
           const response = await fetch(pokemon.url);
           const data = await response.json();
-          const types = data.types.map((type) => type.type.name); // Certifique-se de que está pegando os tipos corretamente aqui.
+          const types = data.types.map((type) => type.type.name);
           return {
             name: data.name,
             imageUrl: data.sprites.front_default,
-            types, // Atribua corretamente os tipos ao objeto Pokémon.
-            url: pokemon.url, // Adicione a URL do Pokémon ao objeto.
+            types, 
+            url: pokemon.url,
           };
         })
       );
