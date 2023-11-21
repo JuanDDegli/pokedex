@@ -118,7 +118,7 @@ const getTypeBackgroundColor = (type) => {
               </div>
             </div>
           </div>
-          <div class="mt-4 ml-10">
+          <div class="mt-4 ml-10 ">
   <h2 class="text-white">Habilidades:</h2>
   <div v-for="(ability, index) in pokemon?.abilities" :key="index" class="inline-block bg-custom-gray-300 p-3 rounded  ml-2 mt-4 mb-8 shadow-white">
     <span class="text-black ">{{ ability.ability.name }}</span>
@@ -147,6 +147,7 @@ const getTypeBackgroundColor = (type) => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .pokemon-modal {
   position: fixed;
@@ -240,30 +241,28 @@ const getTypeBackgroundColor = (type) => {
 }
 
 .shiny-toggle-button.shiny-active {
-  background-color: #ff9900; /* Cor de destaque para a versão shiny */
-  color: white; /* Cor de texto para a versão shiny */
+  background-color: #ff9900; 
+  color: white; 
 }
+
 
 .pokemon-card {
-  /* ... Outros estilos ... */
-  overflow-y: auto; /* Ativar a barra de rolagem vertical quando necessário */
+  overflow-y: auto;
 
-  /* Defina as cores desejadas para a barra de rolagem */
-  scrollbar-width: thin; /* Estilo fino da barra de rolagem (suportado em alguns navegadores) */
-  scrollbar-color: #333 #888; /* Cor da barra de rolagem e cor do fundo */
 
-  /* Para navegadores que não suportam o estilo personalizado da barra de rolagem */
-  /* Você pode adicionar estilos de fallback aqui */
+  scrollbar-width: thin; 
+  scrollbar-color: #333 #888; 
+
 }
 
-/* Estilizando a alça da barra de rolagem */
+
 .pokemon-card::-webkit-scrollbar-thumb {
-  background-color: #888; /* Cor da alça da barra de rolagem */
-  border-radius: 10px; /* Raio de borda da alça */
+  background-color: #888; 
+  border-radius: 10px; 
 }
 
-/* Estilizando o fundo da barra de rolagem */
+
 .pokemon-card::-webkit-scrollbar-track {
-  background-color: #333; /* Cor de fundo da barra de rolagem */
+  background-color: #333; 
 }
 </style>
